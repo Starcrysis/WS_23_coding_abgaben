@@ -2,7 +2,42 @@ import numpy as np
 from numpy.random import choice
 
 from simpleClassifier import simpleClassifier
+
+def calc_err(y, y_pred, w_i):
+    return (sum(w_i * (np.not_equal(y, y_pred)).astype(int)))/sum(w_i)
+
+def calc_alpha(error):
+    return 1/2*np.log((1 - error) / error)
+
+def update_weights(w_i, alpha, y, y_pred):
+    return w_i * np.exp(alpha * (np.not_equal(y, y_pred)).astype(int))
+
+def predict_model(j, theta, X, Y):
+    y_pred = []
+    for elem in X:
+        if elem[j] > theta:
+            y_pred.append(1)
+        else:
+            y_pred.append(-1)
+    return y_pred
+
 def adaboostSimple(X, Y, K, nSamples):
+    j, theta = simpleClassifier()
+
+    for m in range(0, K):
+        if m == 0: 
+            w_i = np.ones(nSamples)*1/K
+        else:
+            w_i = update_weights(w_i, alpha_m, y, y_pred)
+        
+    
+        
+
+
+
+
+
+
     # Adaboost with decision stump classifier as weak classifier
     #
     # INPUT:

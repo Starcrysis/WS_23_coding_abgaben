@@ -2,6 +2,9 @@ import numpy as np
 
 
 def simpleClassifier(X, Y):
+    j = -1
+    theta = 0.5
+
     # Select a simple classifier
     #
     # INPUT:

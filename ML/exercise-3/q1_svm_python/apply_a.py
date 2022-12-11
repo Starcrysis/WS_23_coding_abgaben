@@ -66,7 +66,7 @@ plt.show()
 resultv = np.sign(test['data'].dot(w) + b)
 
 # Accuracy on test data
-accuracy = len(resultv[resultv==test['label']])/len(test['label'])
+accuracy = len(resultv[resultv.flatten()==test['label']])/len(test['label'])
 print('Accuracy on test data with C = {0}: \t {1}\n'.format(C, accuracy))
 
 # Plot the results on test set
@@ -83,7 +83,7 @@ plt.scatter(test['data'][test['label'] == 1][:, 0], test['data'][test['label'] =
             linewidth=0.5)  # blue class=1
 plt.scatter(test['data'][test['label'] == -1][:, 0], test['data'][test['label'] == -1][:, 1], c='r', marker=(8, 2, 0),
             linewidth=0.5)  # red class=-1
-plt.scatter(test['data'][test['label'] != resultv][:, 0], test['data'][test['label'] != resultv][:, 1],
+plt.scatter(test['data'][test['label'] != resultv.flatten()][:, 0], test['data'][test['label'] != resultv.flatten()][:, 1],
             facecolors='none', edgecolors='k', marker='o')  # incorrectly classified
 plt.xlim(xmin - xmargin, xmax + xmargin)
 plt.ylim(ymin - ymargin, ymax + ymargin)

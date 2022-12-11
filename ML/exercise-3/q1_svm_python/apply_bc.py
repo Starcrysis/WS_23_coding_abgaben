@@ -58,7 +58,7 @@ testresult = Xtest.dot(w) + b
 
 testresult[testresult < 0] = -1
 testresult[testresult >= 0] = 1
-test_error = len(testresult[testresult != ttest]) / len(ttest)
+test_error = len(testresult[testresult.flatten() != ttest]) / len(ttest)
 print('Test Error 1_vs_3: ', str(test_error))
  
 # Visualize the weight vector W
@@ -93,7 +93,7 @@ sv = npz['arr_3']
 train_result = result
 train_result[train_result < 0] = -1
 train_result[train_result >= 0] = 1
-train_error = len(train_result[train_result != t])
+train_error = len(train_result[train_result.flatten() != t])
 print(' ')
 print('*** 3-vs-8 ***')
 print('Number of SV: {0}\n'.format(sum(sv)))
@@ -107,7 +107,7 @@ testresult = Xtest.dot(w) + b
 
 testresult[testresult < 0] = -1
 testresult[testresult >= 0] = 1
-test_error = len(testresult[testresult != ttest]) / len(ttest)
+test_error = len(testresult[testresult.flatten() != ttest]) / len(ttest)
 print('Test Error 3-vs-8: ', test_error)
 
 # Visualize the weight vector W
